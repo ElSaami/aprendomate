@@ -1,0 +1,54 @@
+.app-sidebar__user-avatar {
+    width: 48px;
+    padding: 6px;
+}
+.containerLOGO{
+    display: flex;
+    align-items: center;
+}
+.app-sidebar__logoAprendo{
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 40px;
+}
+.app-header__logo{
+    text-align: center;
+}
+.app-header{
+    text-decoration: none;
+}
+.app-sidebar__toggle{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 15pt;
+}
+.app-sidebar__toggle::before{
+	display: none;
+}
+.headerRegister, .header-primary{
+	background: #009688;
+	color: #FFF;
+}
+.headerUpdate{
+	background: #17a2b8;
+	color: #FFF;
+}
+.notBlock{
+	display: none;
+}
+.headerPermisos{
+	background: #009688;
+	color: #FFF;
+}
+.close{
+	color: #FFF;
+}
+
+.close:hover{
+	color: black;
+}
