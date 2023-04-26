@@ -1,12 +1,11 @@
 <?php 
-    headerAdmin($data); 
-    getModal('modalRoles',$data);
+    headerAdmin($data);
+    getModal('modalUnidades',$data);
 ?>
-    <div id="contentAjax"></div> 
     <main class="app-content">
 		<div class="app-title">
 			<div>
-				<h1><i class="fas fa-user-tag"></i> <?= $data['page_tag']?> - <?=$data['page_tag2']?>
+				<h1><i class="fa-solid fa-folder-open"></i> <?= $data['page_tag']?> - <?=$data['page_tag2']?>
 					<button class="btn btn-primary" type="button" onclick="openModal();" ><i class="fas fa-plus-circle"></i> Nuevo</button>
 				</h1>
 			</div>
@@ -20,12 +19,12 @@
 				<div class="tile">
 					<div class="tile-body">
 						<div class="table-responsive">
-							<table class="table table-hover table-bordered" id="tableRoles" style="width:100%">
+							<table class="table table-hover table-bordered" id="tableUnidades" style="width:100%">
 								<thead>
 									<tr>
-										<th>Nombre</th>
-										<th>Descripción</th>
-										<th>Status</th>
+                                        <th>Código</th>
+										<th>Nombre Unidad</th>
+                                        <th>Estado</th>
 										<th>Acciones</th>
 									</tr>
 								</thead>
@@ -40,4 +39,3 @@
 		</div>
     </main>
 <?php footerAdmin($data); ?>
-    

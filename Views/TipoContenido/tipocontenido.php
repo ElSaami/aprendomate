@@ -1,18 +1,17 @@
 <?php 
-    headerAdmin($data); 
-    getModal('modalRoles',$data);
+    headerAdmin($data);
+    getModal('modalTipoContenido',$data);
 ?>
-    <div id="contentAjax"></div> 
     <main class="app-content">
 		<div class="app-title">
 			<div>
-				<h1><i class="fas fa-user-tag"></i> <?= $data['page_tag']?> - <?=$data['page_tag2']?>
+				<h1><i class="fa-solid fa-folder-open"></i> <?= $data['page_tag']?> - <?=$data['page_tag2']?>
 					<button class="btn btn-primary" type="button" onclick="openModal();" ><i class="fas fa-plus-circle"></i> Nuevo</button>
 				</h1>
 			</div>
 			<ul class="app-breadcrumb breadcrumb">
 				<li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-				<li class="breadcrumb-item"><a href="<?= base_url(); ?>/roles"><?= $data['page_title'] ?></a></li>
+				<li class="breadcrumb-item"><a href="<?= base_url(); ?>/tipocontenido"><?= $data['page_title'] ?></a></li>
 			</ul>
 		</div>
 		<div class="row">
@@ -20,12 +19,13 @@
 				<div class="tile">
 					<div class="tile-body">
 						<div class="table-responsive">
-							<table class="table table-hover table-bordered" id="tableRoles" style="width:100%">
+							<table class="table table-hover table-bordered" id="tableTipoC" style="width:100%">
 								<thead>
 									<tr>
-										<th>Nombre</th>
+                                        <th>Código</th>
+										<th>Tipo de Contenido</th>
 										<th>Descripción</th>
-										<th>Status</th>
+                                        <th>Estado</th>
 										<th>Acciones</th>
 									</tr>
 								</thead>
@@ -40,4 +40,3 @@
 		</div>
     </main>
 <?php footerAdmin($data); ?>
-    

@@ -1,9 +1,9 @@
-<!-- Modal -->
-<div class="modal fade" id="modalFormRol" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- Modal Unidad -->
+<div class="modal fade" id="modalFormUnidad" tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header headerRegister">
-				<h5 class="modal-title" id="titleModal">Nuevo Rol</h5>
+				<h5 class="modal-title" id="titleModal">Nueva Unidad</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -11,19 +11,19 @@
 			<div class="modal-body">
 				
 				<div class="tile-body">
-					<form id="formRol" name="formRol">
-						<input type="hidden" id="idRol" name="idRol" value="">
-						<div class="form-group">
-							<label class="control-label">Nombre</label>
-							<input class="form-control" id="txtNombre" name="txtNombre" type="text" placeholder="Nombre del rol" required="">
+					<form id="formUnidad" name="formUnidad">
+						<input type="hidden" id="idUnidades" name="idUnidades" value="">
+                        <div class="form-group">
+							<label class="control-label">Código</label>
+							<input class="form-control" id="txtCodigo" name="txtCodigo" placeholder="Código de la Unidad (Ejemplo: 100)"></textarea>
 						</div>
 						<div class="form-group">
-							<label class="control-label">Descripción</label>
-							<textarea class="form-control" id="txtDescripcion" name="txtDescripcion" rows="2" placeholder="Descripción del rol" required=""></textarea>
+							<label class="control-label">Nombre Unidad</label>
+							<input class="form-control" id="txtNombreU" name="txtNombreU" type="text" placeholder="Nombre de la unidad" >
 						</div>
 						<div class="form-group">
 							<label for="exampleSelect1">Estado</label>
-							<select class="form-control selectpicker" id="listStatus" name="listStatus" required>
+							<select class="form-control selectpicker" id="listStatus" name="listStatus" required="">
 								<option value="1">Activo</option>
 								<option value="2">Inactivo</option>
 							</select>
@@ -38,4 +38,3 @@
 		</div>
 	</div>
 </div>
-
