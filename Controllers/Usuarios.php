@@ -3,6 +3,11 @@
 	class Usuarios extends Controllers{
 		public function __construct()
 		{
+			session_start();
+			if(empty($_SESSION['login']))
+			{
+				header('Location: '.base_url().'/login');
+			}
 			parent::__construct();
 		}
 
@@ -15,11 +20,9 @@
             $data['page_functions_js'] = "functions_usuarios.js";
 			$this->views->getView($this,"usuarios",$data);
 		}
-
 		public function setUsuario(){
-			if($_POST){
-				
-				if(empty($_POST['txtIdentificacion']) || empty($_POST['txtNombre']) || empty($_POST['txtApellido']) || empty($_POST['txtTelefono']) || empty($_POST['txtEmail']) || empty($_POST['listRolid']) || empty($_POST['listStatus']) )
+			if($_POST){			
+				if(empty($_POST['txtIdentificacion']) || empty($_POST['txtNombre']) || empty($_POST['txtApellido']) || empty($_POST['listRolid']) || empty($_POST['listStatus']) )
 				{
 					$arrResponse = array("status" => false, "msg" => 'Datos incorrectos.');
 				}else{ 
@@ -27,23 +30,20 @@
 					$strIdentificacion = strClean($_POST['txtIdentificacion']);
 					$strNombre = ucwords(strClean($_POST['txtNombre']));
 					$strApellido = ucwords(strClean($_POST['txtApellido']));
-					$intTelefono = intval(strClean($_POST['txtTelefono']));
-					$strEmail = strtolower(strClean($_POST['txtEmail']));
 					$intTipoId = intval(strClean($_POST['listRolid']));
 					$intStatus = intval(strClean($_POST['listStatus']));
-
+					$request_user = "";
 					if($idUsuario == 0)
 					{
 						$option = 1;
 						$strPassword =  empty($_POST['txtPassword']) ? hash("SHA256",passGenerator()) : hash("SHA256",$_POST['txtPassword']);
 						$request_user = $this->model->insertUsuario($strIdentificacion,
-																			$strNombre, 
-																			$strApellido, 
-																			$intTelefono, 
-																			$strEmail,
-																			$strPassword, 
-																			$intTipoId, 
-																			$intStatus );
+																	$strNombre, 
+																	$strApellido,
+																	$strPassword, 
+																	$intTipoId, 
+																	$intStatus );
+						
 					}else{
 						$option = 2;
 						$strPassword =  empty($_POST['txtPassword']) ? "" : hash("SHA256",$_POST['txtPassword']);
@@ -51,11 +51,10 @@
 																	$strIdentificacion, 
 																	$strNombre,
 																	$strApellido, 
-																	$intTelefono, 
-																	$strEmail,
 																	$strPassword, 
 																	$intTipoId, 
 																	$intStatus);
+						
 
 					}
 
@@ -66,17 +65,16 @@
 						}else{
 							$arrResponse = array('status' => true, 'msg' => 'Datos Actualizados correctamente.');
 						}
-					}else if($request_user == 'exist'){
+					}elseif($request_user == "exist"){
 						$arrResponse = array('status' => false, 'msg' => '¡Atención! el email o la identificación ya existe, ingrese otro.');		
 					}else{
-						$arrResponse = array("status" => false, "msg" => 'No es posible almacenar los datos.');
+						$arrResponse = array('status' => false, 'msg' => 'No es posible almacenar los datos.');
 					}
 				}
 				echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
 			}
 			die();
 		}
-
 		public function getUsuarios()
 		{
 			$arrData = $this->model->selectUsuarios();
@@ -134,3 +132,5 @@
 
 	}
  ?>
+
+ 
